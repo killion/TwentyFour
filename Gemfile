@@ -35,6 +35,8 @@ gem 'font-awesome-rails'    # Use fonts instead of icons in Bootstrap
 # Use puma as the app server
 gem 'puma'
 
+gem 'newrelic_rpm'          # Application and server monitoring
+
 group :production do
   gem 'rails_12factor'      # Gem for logging to stdout and serving assets
 end
