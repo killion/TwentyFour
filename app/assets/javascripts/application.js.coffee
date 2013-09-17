@@ -16,3 +16,5 @@
 #= require bootstrap
 #= require_self
 #= require_tree .
+
+window.twenty_four = {}
