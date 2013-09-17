@@ -20,4 +20,5 @@ twenty_four.Trip =
     alert "We didn't get your location because #{error.message}"
 
 $ ->
-  twenty_four.Trip.get_current_location()
+  if $(".new_trip")
+    twenty_four.Trip.get_current_location()
