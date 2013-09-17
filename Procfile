@@ -1,0 +1,1 @@
+web: bundle exec puma -t 1:5 -b tcp://0.0.0.0:$PORT
