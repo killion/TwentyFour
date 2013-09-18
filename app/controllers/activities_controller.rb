@@ -2,7 +2,8 @@ class ActivitiesController < ApplicationController
   # GET /activities
   # GET /activities.json
   def index
-    @activities = Activity.all
+    @trip = Trip.find_by_unique_id(params[:trip_id])
+    @activities = @trip.viator_results.body.data
 
     respond_to do |format|
       format.html # index.html.erb
