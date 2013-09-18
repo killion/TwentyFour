@@ -6,26 +6,38 @@
 
   th {
     position: relative;
+    border-top: none;
+
+    .show-share-modal {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      color: white;
+      text-shadow: 1px 1px 5px rgba(0,0,0,.5);
+    }
+
+    h1 {
+      font-family: 'Digital W00';
+      text-transform: uppercase;
+      text-shadow: 1px 1px 5px black;
+      color: white;
+      text-align: center;
+      font-weight: normal;
+    }
 
     .actions {
       width: 100%;
       text-align: center;
       bottom: 10px;
       position: absolute;
+      margin-left: -10px;
 
       .btn {
         color: #333;
-        box-shadow: 0 0 10px black;
+        box-shadow: 0 0 5px rgba(0,0,0,.5);
       }
     }
-  }
-
-  h1 {
-    font-family: 'Digital W00';
-    text-transform: uppercase;
-    text-shadow: 1px 1px 5px black;
-    color: white;
-    text-align: center;
   }
 
   tr.warning {
