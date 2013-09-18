@@ -34,4 +34,6 @@ Twentyfour::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  VIATOR_API_KEY = "4582537100172801"
 end

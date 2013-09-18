@@ -37,6 +37,13 @@ gem 'puma'
 
 gem 'newrelic_rpm'          # Application and server monitoring
 
+# Gems for working with Viator
+gem 'faraday'
+gem 'multi_json'
+gem 'rash'
+gem 'hashie'
+gem 'geocoder'
+
 group :production do
   gem 'rails_12factor'      # Gem for logging to stdout and serving assets
 end

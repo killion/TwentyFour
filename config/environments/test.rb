@@ -34,4 +34,6 @@ Twentyfour::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  VIATOR_API_KEY = "4582537100172801"
 end
