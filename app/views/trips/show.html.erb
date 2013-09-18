@@ -1,5 +1,12 @@
 <p id="notice"><%= notice %></p>
 
+<style type="text/css">
+th {
+  height: 150px;
+  background-image: url(<%= @trip.city_image %>);
+}
+</style>
+
 <table class="hours table table-hover table-striped">
   <tr>
     <th colspan="2">

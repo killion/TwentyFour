@@ -59,4 +59,13 @@ class Trip < ActiveRecord::Base
     sphere_id = JSON.parse(response.body)["data"][0]["id"]
     "http://www.thesphere.com/direct_embed/#{sphere_id}"
   end
+
+  def city_image
+    panoramio = PanoramioRb.get_panoramas_from_point [self.latitude, self.longitude]
+    if panoramio
+      panoramio.photos.first.photo_file_url
+    else
+      nil
+    end
+  end
 end
