@@ -14,6 +14,8 @@
 #= require jquery.ui.all
 #= require jquery_ujs
 #= require bootstrap
+#= require bootstrap-modalmanager.js
+#= require bootstrap-modal.js
 #= require_self
 #= require_tree .
 
