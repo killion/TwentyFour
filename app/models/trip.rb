@@ -1,5 +1,11 @@
 class Trip < ActiveRecord::Base
   attr_accessible :destination, :latitude, :longitude, :user_id
+  reverse_geocoded_by :latitude, :longitude do |trip,results|
+    if geo = results.first
+      trip.destination = "#{geo.city}, #{geo.state} #{geo.country}"
+    end
+  end
+  after_validation :reverse_geocode
   require 'viator'
 
   def viator_results
