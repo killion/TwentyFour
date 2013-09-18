@@ -2,22 +2,29 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .hours {
+  margin-bottom: 0;
+
+  th {
+    position: relative;
+
+    .actions {
+      width: 100%;
+      text-align: center;
+      bottom: 10px;
+      position: absolute;
+
+      .btn {
+        color: #333;
+      }
+    }
+  }
+
   h1 {
     font-family: 'Digital W00';
     text-transform: uppercase;
     text-shadow: 1px 1px 5px black;
     color: white;
     text-align: center;
-  }
-
-  .add-activity {
-    visibility: hidden;
-  }
-
-  tr:hover {
-    .add-activity {
-      visibility: visible;
-    }
   }
 
   tr.warning {

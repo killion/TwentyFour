@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<div id="notice" class="alert hide"><%= notice %></div>
 
 <style type="text/css">
 th {
@@ -11,12 +11,16 @@ th {
   <tr>
     <th colspan="2">
       <h1>24 hours in <%= @trip.city %></h1>
+      <span class="actions">
+        <button class="btn btn-large btn-warning find-activity"><i class="icon-search"></i> Find Activities</button>
+        <button class="btn btn-large btn-warning find-event"><i class="icon-search"></i> Find Events</button>
+      </span>
     </th>
   </tr>
   <% @trip.next_24_hours.each do |time| %>
     <tr class="<%= "warning" if Time.now.beginning_of_hour.in_time_zone(@trip.nearest_timezone) == time.beginning_of_hour %>">
       <td><%= time.beginning_of_hour.to_s(:local) %></td>
-      <td><button class="btn btn-large btn-primary btn-block add-activity"><i class="icon-plus-sign"></i> Add</button></td>
+      <td></td>
     </tr>
   <% end %>
 </table>
