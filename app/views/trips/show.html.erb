@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<% @trip.next_24_hours.each do |time| %>
+  <%= time.beginning_of_hour.to_s(:local) %><br>
+<% end %>
+
 <p>
   <b>Latitude:</b>
   <%= @trip.latitude %>

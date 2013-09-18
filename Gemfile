@@ -44,6 +44,9 @@ gem 'rash'
 gem 'hashie'
 gem 'geocoder'
 
+gem 'nearest_time_zone'     # Get the timezone for specific locations
+gem 'stamp'                 # Better date formatting
+
 group :production do
   gem 'rails_12factor'      # Gem for logging to stdout and serving assets
 end
