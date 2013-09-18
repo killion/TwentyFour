@@ -1,4 +1,7 @@
 Twentyfour::Application.routes.draw do
+  resources :activities
+
+
   resources :trips
 
 

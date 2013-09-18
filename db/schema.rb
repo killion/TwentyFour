@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130917220010) do
+ActiveRecord::Schema.define(:version => 20130918061128) do
+
+  create_table "activities", :force => true do |t|
+    t.integer  "trip_id"
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "trips", :force => true do |t|
     t.float    "latitude"
