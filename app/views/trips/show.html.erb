@@ -1,8 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<% @trip.next_24_hours.each do |time| %>
-  <%= time.beginning_of_hour.to_s(:local) %><br>
-<% end %>
+<table class="hours table table-hover table-striped">
+  <% @trip.next_24_hours.each do |time| %>
+    <tr class="<%= "warning" if Time.now.beginning_of_hour.in_time_zone(@trip.nearest_timezone) == time.beginning_of_hour %>">
+      <td><%= time.beginning_of_hour.to_s(:local) %></td>
+      <td><button class="btn btn-large btn-primary btn-block add-activity"><i class="icon-plus-sign"></i> Add</button></td>
+    </tr>
+  <% end %>
+</table>
 
 <p>
   <b>Latitude:</b>
