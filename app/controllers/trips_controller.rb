@@ -13,7 +13,7 @@ class TripsController < ApplicationController
   # GET /trips/1
   # GET /trips/1.json
   def show
-    @trip = Trip.find(params[:id])
+    @trip = Trip.find_by_unique_id(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -56,7 +56,7 @@ class TripsController < ApplicationController
   # PUT /trips/1
   # PUT /trips/1.json
   def update
-    @trip = Trip.find(params[:id])
+    @trip = Trip.find_by_unique_id(params[:id])
 
     respond_to do |format|
       if @trip.update_attributes(params[:trip])
@@ -72,7 +72,7 @@ class TripsController < ApplicationController
   # DELETE /trips/1
   # DELETE /trips/1.json
   def destroy
-    @trip = Trip.find(params[:id])
+    @trip = Trip.find_by_unique_id(params[:id])
     @trip.destroy
 
     respond_to do |format|

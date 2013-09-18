@@ -1,5 +1,5 @@
 class Trip < ActiveRecord::Base
-  attr_accessible :city, :state, :country, :latitude, :longitude, :user_id
+  attr_accessible :city, :state, :country, :latitude, :longitude, :unique_id
 
   reverse_geocoded_by :latitude, :longitude do |trip,results|
     if geo = results.first
@@ -8,11 +8,17 @@ class Trip < ActiveRecord::Base
       trip.country = geo.country
     end
   end
+
+  before_create :create_unique_id
   after_validation :reverse_geocode
 
   has_many :activities
 
   require 'viator'
+
+  def to_param
+    unique_id
+  end
 
   def destination
     "#{self.city}, #{self.state} #{self.country}"
@@ -68,4 +74,9 @@ class Trip < ActiveRecord::Base
       nil
     end
   end
-end
+
+  protected
+    def create_unique_id
+      self.unique_id = SecureRandom.urlsafe_base64
+    end
+  end
