@@ -27,4 +27,26 @@ class Trip < ActiveRecord::Base
     end
     next_24_hours
   end
+
+  def sphere_params
+    {
+      :page => 1,
+      :count => 1,
+      :latitude => latitude,
+      :longitude => longitude,
+      :distance => 5
+    }
+  end
+
+  def get_sphere
+    connection = Faraday.new(:url => 'http://www.thesphere.com')
+
+    response = connection.post do |request|
+      request.url "/api/v3/panos/search"
+      request.headers["x-sphere-api-key"] = 'a0c5c9406222c07f566e'
+      request.body = sphere_params
+    end
+    sphere_id = JSON.parse(response.body)["data"][0]["id"]
+    "http://www.thesphere.com/direct_embed/#{sphere_id}"
+  end
 end
