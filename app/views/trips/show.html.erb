@@ -10,7 +10,7 @@ th {
 <table class="hours table table-hover table-striped">
   <tr>
     <th colspan="2">
-      <a href="#share-modal" class="show-share-modal"><i class="icon-share-sign"></i></a>
+      <a href="#share-modal" class="show-share-modal" data-toggle="modal"><i class="icon-share-sign"></i></a>
       <h1>24 hours in<br><%= @trip.city %></h1>
       <span class="actions">
         <button class="btn btn-warning find-activity"><i class="icon-search"></i> Find Activities</button>
@@ -25,3 +25,5 @@ th {
     </tr>
   <% end %>
 </table>
+
+<%= render :partial => "trips/share-modal" %>

@@ -17,6 +17,11 @@
       text-shadow: 1px 1px 5px rgba(0,0,0,.5);
     }
 
+    .show-share-modal:hover, .show-share-modal:active, .show-share-modal:focus {
+      text-decoration: none;
+      background-color: transparent;
+    }
+
     h1 {
       font-family: 'Digital W00';
       text-transform: uppercase;
