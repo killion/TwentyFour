@@ -36,4 +36,5 @@ Twentyfour::Application.configure do
   config.assets.debug = true
 
   VIATOR_API_KEY = "4582537100172801"
+  WCITIES_API_KEY = "65986dd44d03ba2bbf8e596984ee5fb4"
 end

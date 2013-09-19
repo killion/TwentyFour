@@ -1,3 +1,6 @@
+require 'viator'
+require 'wcities'
+
 class Trip < ActiveRecord::Base
   attr_accessible :city, :state, :country, :latitude, :longitude, :unique_id
 
@@ -14,7 +17,6 @@ class Trip < ActiveRecord::Base
 
   has_many :activities
 
-  require 'viator'
 
   def to_param
     unique_id
@@ -30,6 +32,14 @@ class Trip < ActiveRecord::Base
       latitude, longitude)
     viator.search_products(:start_date => Date.today, :end_date => Date.tomorrow, 
       :dest_id => destination_id)
+  end
+
+  def wcities_results
+    wcities = Wcities::Client.new
+    wcities.get_events(start_date: Date.today, 
+      end_date: Date.tomorrow, 
+      latitude: latitude, 
+      longitude: longitude)
   end
 
   def nearest_timezone

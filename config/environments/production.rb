@@ -66,4 +66,5 @@ Twentyfour::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   VIATOR_API_KEY = "4582537100172801"
+  WCITIES_API_KEY = "65986dd44d03ba2bbf8e596984ee5fb4"
 end
