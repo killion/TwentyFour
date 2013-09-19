@@ -10,7 +10,7 @@
           <%= activity.title %> - <%= activity.duration %>
         </h4>
         <div>
-          <%= f.select(:time, options_for_select(@trip.next_24_hours.map{ |s| s.beginning_of_hour.to_s(:local) }), { :class => 'time-select' } ) %>
+          <%= f.select(:time, options_for_select(@trip.next_24_hours.map{ |s| [ s.beginning_of_hour.to_s(:local), s.beginning_of_hour ] }), { :class => 'time-select' } ) %>
         </div>
 
         <%= f.hidden_field :url, :value => activity.web_url %>

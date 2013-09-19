@@ -4,7 +4,7 @@ class Activity < ActiveRecord::Base
   belongs_to :trip
 
   def end_time
-    Chronic.parse(self.duration + " from " + self.time).in_time_zone(self.trip.nearest_timezone).beginning_of_hour
+    Chronic.parse(self.duration + " after " + self.parsed_time.to_s(:europian)).in_time_zone(self.trip.nearest_timezone)
   end
 
   def parsed_time
