@@ -19,7 +19,7 @@
             { :class => 'time-select' } ) %>
         </div>
 
-        <%= f.hidden_field :url, :value => event.schedule.try(:bookinginfo).try(:bookinglink).try(:booking_url) or event.try(:links).try(:trackback_url) %>
+        <%= f.hidden_field :url, :value => Array.wrap(event.schedule.try(:bookinginfo).try(:bookinglink)).first.try(:booking_url) or event.try(:links).try(:trackback_url) %>
         <%= f.hidden_field :title, :value => event.name %>
         <% if event.schedule.try(:bookinginfo).try(:bookinglink).try(:price) %>
           <%= f.submit "Book $#{event.schedule.bookinginfo.bookinglink.price.value}", :id => "send", :class => 'book_activity activity_price btn btn-success' %>
