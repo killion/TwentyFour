@@ -24,6 +24,7 @@
         
         <%= f.hidden_field :url, :value => booking.try(:booking_url) or event.try(:links).try(:trackback_url) %>
         <%= f.hidden_field :title, :value => event.name %>
+        <%= f.hidden_field :duration, :value => "2 hours" %>
         <% if booking.try(:price) %>
           <%= f.submit "Book $#{booking.price.value}", :id => "send", :class => 'book_activity activity_price btn btn-success' %>
         <% else %>
