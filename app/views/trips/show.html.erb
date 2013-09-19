@@ -3,7 +3,13 @@
 <% @trip.next_24_hours.each do |time| %>
   <tr class="<%= "warning" if Time.now.beginning_of_hour.in_time_zone(@trip.nearest_timezone) == time.beginning_of_hour %>">
     <td><%= time.beginning_of_hour.to_s(:local) %></td>
-    <td></td>
+    <td>
+      <% @trip.activities.each do |activity| %>
+        <% if activity.time == time.beginning_of_hour.to_s(:local) %>
+          <a href="<%= activity.url %>" target="_blank"><%= activity.title %></a>
+        <% end %>
+      <% end %>
+    </td>
   </tr>
 <% end %>
 
