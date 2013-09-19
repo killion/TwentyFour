@@ -2,7 +2,7 @@
 
 <% @events.each do |event| %>
   <% next unless event.schedule.event_time %>
-  <%= form_for([@trip, Activity.new], :remote => true) do |f| %>
+  <%= form_for([@trip, Activity.new]) do |f| %>
   <tr class="activity activity_result">
     <td>
       <div class="event_image">
