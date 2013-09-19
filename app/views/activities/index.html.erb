@@ -7,7 +7,7 @@
       <div class="activity_image" 
         style="background-image: url('<%= activity.thumbnail_hi_res_url %>');">
         <h4 class="activity_title">
-          <%= activity.title %>
+          <%= activity.title %> - <%= activity.duration %>
         </h4>
         <div>
           <%= f.select(:time, options_for_select(@trip.next_24_hours.map{ |s| s.beginning_of_hour.to_s(:local) }), { :class => 'time-select' } ) %>
@@ -15,6 +15,7 @@
 
         <%= f.hidden_field :url, :value => activity.web_url %>
         <%= f.hidden_field :title, :value => activity.title %>
+        <%= f.hidden_field :duration, :value => activity.duration %>
         <%= f.submit "Book #{activity.price_formatted}", :id => "send", :class => 'book_activity activity_price btn btn-success' %>
       </div>
       <p class="activity_description">

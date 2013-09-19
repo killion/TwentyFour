@@ -5,8 +5,9 @@
     <td><%= time.beginning_of_hour.to_s(:local) %></td>
     <td>
       <% @trip.activities.each do |activity| %>
-        <% if activity.time == time.beginning_of_hour.to_s(:local) %>
-          <a href="<%= activity.url %>" target="_blank"><%= activity.title %></a>
+        <% if (activity.parsed_time..activity.end_time).cover? time.beginning_of_hour %>
+          <a href="<%= activity.url %>" target="_blank"><%= activity.title %></a> 
+          <%= link_to '<i class="icon-remove-sign"></i>'.html_safe, [@trip, activity], method: :delete, data: { confirm: 'Are you sure?' } %>
         <% end %>
       <% end %>
     </td>
