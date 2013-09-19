@@ -13,9 +13,10 @@
     background-size: 100%;
   }
 
-  .activity_title {
+  a, a:visited {
     color: white;
     text-shadow: 1px 1px 5px black;
+    text-decoration: underline;
   }
 
   .book_activity {
