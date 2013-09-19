@@ -41,11 +41,12 @@ class ActivitiesController < ApplicationController
   # POST /activities
   # POST /activities.json
   def create
-    @activity = Activity.new(params[:activity])
+    @trip = Trip.find_by_unique_id(params[:trip_id])
+    @activity = @trip.activities.new(params[:activity])
 
     respond_to do |format|
       if @activity.save
-        format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
+        format.html { redirect_to @trip, notice: 'Activity was successfully created.' }
         format.json { render json: @activity, status: :created, location: @activity }
       else
         format.html { render action: "new" }

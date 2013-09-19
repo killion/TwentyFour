@@ -3,6 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .activity_result {
+  td {
+    padding: 0 !important;
+  }
+
   .activity_image {
     padding: 10px;
     height: 140px;
@@ -18,8 +22,11 @@
     width: 150px;
   }
 
-  .time-select {
-    width: 175px;
-    margin-bottom: 5px;
+  #activity_time {
+    width: 150px;
+  }
+
+  .activity_description {
+    padding: 10px;
   }
 }

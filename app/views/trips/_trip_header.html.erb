@@ -1,0 +1,18 @@
+<style type="text/css">
+th {
+  height: 150px;
+  background-image: url(<%= @trip.city_image %>);
+}
+</style>
+
+<table class="hours table table-hover table-striped">
+  <tr>
+    <th colspan="2">
+      <a href="#share-modal" class="show-share-modal" data-toggle="modal"><i class="icon-share-sign"></i></a>
+      <h1>24 hours in<br><%= @trip.city %></h1>
+      <span class="actions">
+        <%= link_to "<i class='icon-search'></i> Find Activities".html_safe, trip_activities_path(@trip), :class => "btn btn-warning find-activity" %>
+        <button class="btn btn-warning find-event"><i class="icon-search"></i> Find Events</button>
+      </span>
+    </th>
+  </tr>
