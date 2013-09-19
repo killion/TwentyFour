@@ -5,9 +5,10 @@
   <%= form_for([@trip, Activity.new], :remote => true) do |f| %>
   <tr class="activity activity_result">
     <td>
-      <div class="">
+      <div class="event_image">
         <h4 class="activity_title">
-          <%= event.name %>
+          <% booking = Array.wrap(event.schedule.try(:bookinginfo).try(:bookinglink)).first %>
+          <a href="<%= booking.try(:booking_url) or event.try(:links).try(:trackback_url) %>" target="_blank"><%= event.name %></a>
         </h4>
         <div>
           <%= f.select(:time, options_for_select(
@@ -20,7 +21,7 @@
             { :class => 'time-select' } ) %>
         </div>
 
-        <% booking = Array.wrap(event.schedule.try(:bookinginfo).try(:bookinglink)).first %>
+        
         <%= f.hidden_field :url, :value => booking.try(:booking_url) or event.try(:links).try(:trackback_url) %>
         <%= f.hidden_field :title, :value => event.name %>
         <% if booking.try(:price) %>
@@ -31,14 +32,8 @@
       </div>
       <p class="activity_description activity_categories">
         <% Array.wrap(event.category).each do |category| %>
-          <br>
-          <%= category.catname %>
+          <%= category.catname %><br>
         <% end %>
-        <br>
-      </p>
-      <p class="activity_description">
-        <%#= event.schedule.event_time %>
-        <!-- <br> -->
         <%=raw event.desc %>
       </p>
     </td>
