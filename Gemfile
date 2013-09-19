@@ -46,6 +46,7 @@ gem 'geocoder'
 
 gem 'nearest_time_zone'     # Get the timezone for specific locations
 gem 'stamp'                 # Better date formatting
+gem 'chronic'               # Better date parsing
 
 gem 'panoramio-rb', :git => "https://github.com/killion/panoramio-rb.git"   # Get photos for locations
 
