@@ -12,7 +12,9 @@ th {
       <a href="<%= trip_path(@trip) %>"><h1>24 hours in<br><%= @trip.city %></h1></a>
       <span class="actions">
         <%= link_to "<i class='icon-search'></i> Find Activities".html_safe, trip_activities_path(@trip), :class => "btn btn-warning find-activity" %>
-        <button class="btn btn-warning find-event"><i class="icon-search"></i> Find Events</button>
+        <%= link_to trip_events_path(@trip), class: "btn btn-warning find-event" do %>
+          <i class="icon-search"></i> Find Events
+        <% end %>
       </span>
     </th>
   </tr>

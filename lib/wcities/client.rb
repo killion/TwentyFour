@@ -34,7 +34,8 @@ module Wcities
         start: params[:start_date].to_date.to_formatted_s("%Y-%m-%d"),
         end: params[:end_date].to_date.to_formatted_s("%Y-%m-%d"),
         miles: '100',
-        sortBy: 'distance'
+        sortBy: 'distance',
+        moreInfo: 'fallbackimage'
       }
       response = @http.get "/V3/event_api/getEvents.php", product_options
       response.body.cityevent

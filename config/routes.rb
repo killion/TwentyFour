@@ -2,6 +2,7 @@ Twentyfour::Application.routes.draw do
 
   resources :trips do
     resources :activities
+    resources :events
   end
 
   # The priority is based upon order of creation:

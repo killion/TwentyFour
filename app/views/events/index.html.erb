@@ -1,0 +1,47 @@
+<%= render :partial => "trips/trip_header" %>
+
+<% @events.each do |event| %>
+  <%= form_for([@trip, Activity.new], :remote => true) do |f| %>
+  <tr class="activity activity_result">
+    <td>
+      <div class="">
+        <h4 class="activity_title">
+          <%= event.name %>
+        </h4>
+        <div>
+          <%= f.select(:time, options_for_select(
+              @trip.next_24_hours.keep_if do |time| 
+                time.beginning_of_hour.to_s(:time) == Time.parse(event.schedule.event_time).beginning_of_hour.to_s(:time)
+              end.map do |time| 
+                [ time.beginning_of_hour.to_s(:local), time.beginning_of_hour.to_s(:time) ]
+              end
+            ), 
+            { :class => 'time-select' } ) %>
+        </div>
+
+        <%= f.hidden_field :url, :value => event.schedule.try(:bookinginfo).try(:bookinglink).try(:booking_url) or event.try(:links).try(:trackback_url) %>
+        <%= f.hidden_field :title, :value => event.name %>
+        <% if event.schedule.try(:bookinginfo).try(:bookinglink).try(:price) %>
+          <%= f.submit "Book $#{event.schedule.bookinginfo.bookinglink.price.value}", :id => "send", :class => 'book_activity activity_price btn btn-success' %>
+        <% else %>
+          <%= f.submit "Go!", :id => "send", :class => 'book_activity activity_price btn btn-success' %>
+        <% end %>
+      </div>
+      <p class="activity_description activity_categories">
+        <% Array.wrap(event.category).each do |category| %>
+          <br>
+          <%= category.catname %>
+        <% end %>
+        <br>
+      </p>
+      <p class="activity_description">
+        <%#= event.schedule.event_time %>
+        <!-- <br> -->
+        <%=raw event.desc %>
+      </p>
+    </td>
+  </tr>
+  <% end %>
+<% end %>
+
+<%= render :partial => "trips/trip_footer" %>
