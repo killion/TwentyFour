@@ -5,7 +5,7 @@
     <td><%= time.beginning_of_hour.to_s(:local) %></td>
     <td>
       <% @trip.activities.each do |activity| %>
-        <% if activity.time == time.beginning_of_hour.to_s(:local) %>
+        <% if Time.parse(activity.time).beginning_of_hour.to_s(:local) == time.beginning_of_hour.to_s(:local) %>
           <a href="<%= activity.url %>" target="_blank"><%= activity.title %></a>
         <% end %>
       <% end %>
