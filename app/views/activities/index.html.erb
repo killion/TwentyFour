@@ -1,7 +1,7 @@
 <%= render :partial => "trips/trip_header" %>
 
 <% @activities.each do |activity| %>
-  <%= form_for([@trip, Activity.new], :remote => true) do |f| %>
+  <%= form_for([@trip, Activity.new]) do |f| %>
   <tr class="activity activity_result">
     <td>
       <div class="activity_image" 
